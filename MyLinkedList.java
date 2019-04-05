@@ -158,6 +158,10 @@ public class MyLinkedList {
 		size--;
 		return true;
 	}
+	public void reset() {
+		start = null;
+		end = null;
+	}
 /*	public static void main(String[] wef) {
 		MyLinkedList te = new MyLinkedList();
 		te.add(4);
