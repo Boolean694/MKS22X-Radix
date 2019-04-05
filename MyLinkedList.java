@@ -8,17 +8,7 @@ public class MyLinkedList {
 	    end = null;
     }
 	public int size() {
-	    if(size == 0) {
-	        return 0;
-	    }
-	    if(start == end) {return 1;}
-		int g = 2;
-		Node c = start.next();
-		while(c.next() != null) {
-			g++;
-			c = c.next();
-		}
-		return g;
+		return size;
 	}
 	public boolean add(Integer v) {
 	    if(size == 0) {
@@ -165,14 +155,21 @@ public class MyLinkedList {
 		return true;
 	}
 	public void reset() {
+		size = 0;
 		start = null;
 		end = null;
 	}
 	public void extend(MyLinkedList other) {
 		boolean bool = false;
+
 		System.out.println("this size: " + this.size());
 		System.out.println("other size: " + other.size());
+		System.out.println("this: " + this);
 		System.out.println("other: " + other);
+		if(this.size() == 0) {} else {System.out.println("this start: " + this.start);}
+		if(other.size() == 0) {} else {System.out.println("other start: " + other.start);}
+		System.out.println("");
+
 		if(other.size() == 0) {
 			return;
 		}
@@ -195,17 +192,17 @@ public class MyLinkedList {
 			this.removeFirst();
 		}
 	}
-/*	public static void main(String[] wef) {
+	public static void main(String[] wef) {
 		MyLinkedList te = new MyLinkedList();
-		te.add(8);
-		te.add(9);
-		te.add(0);
 		System.out.println("Original: " + te);
 		MyLinkedList tr = new MyLinkedList();
+		tr.add(8);
+		tr.add(9);
+		tr.add(0);
 		System.out.println("Combining this with otiginal: " + tr);
 		te.extend(tr);
 		System.out.println(te);
 		te.add(10);
 		System.out.println(te);
-	} */
+	}
 }

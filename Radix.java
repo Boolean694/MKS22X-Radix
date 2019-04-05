@@ -16,9 +16,23 @@ public class Radix {
     }
     for(int w = 0; w < ll; w++) {
       for(int e = 0; e < dat.length; e++) {
-        buckets[((supermega.get(e) / ((int)Math.pow(10,w))) % 10) + 10].add(dat[e]);
+        if(supermega.get(e) < 0) {
+          if(w == ll - 1) {
+            buckets[((supermega.get(e) / ((int)Math.pow(10,w))) % 10) + 10].add(dat[e]);
+          }
+          else {
+            buckets[(((supermega.get(e) * -1) / ((int)Math.pow(10,w))) % 10) + 10].add(dat[e]);
+          }
+        }
+        else {
+          buckets[((supermega.get(e) / ((int)Math.pow(10,w))) % 10) + 10].add(dat[e]);
+        }
       }
       supermega.reset();
+      for(int r = 0; r < buckets.length; r++) {
+        System.out.print(buckets[r] + " ");
+        System.out.println("");
+      }
       for(int r = 0; r < buckets.length; r++) {
         supermega.extend(buckets[r]);
       }
