@@ -143,6 +143,12 @@ public class MyLinkedList {
 		size--;
 		return tr;
 	}
+	public Node start() {
+		return start;
+	}
+	public Node end() {
+		return end;
+	}
 	public Integer removeFirst() {
 		Node c = start.next();
 		Integer pret = start.getData();
@@ -162,12 +168,33 @@ public class MyLinkedList {
 		start = null;
 		end = null;
 	}
+	public void extend(MyLinkedList other) {
+		Node ente = other.end();
+		for(int q = 0; q < other.size(); q++) {
+			this.end.setNext(other.start());
+			this.end = other.start();
+			Node c = other.start.next();
+			other.start = c;
+		}
+		this.end = ente;
+	}
 /*	public static void main(String[] wef) {
 		MyLinkedList te = new MyLinkedList();
 		te.add(4);
 		te.add(3);
+		te.add(2);
+		te.add(1);
+		te.add(6);
+		te.add(5);
+		System.out.println("Original: " + te);
+		MyLinkedList tr = new MyLinkedList();
+		tr.add(8);
+		tr.add(9);
+		tr.add(0);
+		System.out.println("Combining this with otiginal: " + tr);
+		te.extend(tr);
 		System.out.println(te);
-		System.out.println("num removed: " + te.removeFirst());
+		te.add(10);
 		System.out.println(te);
 	} */
 }
