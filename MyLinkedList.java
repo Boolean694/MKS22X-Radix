@@ -169,32 +169,40 @@ public class MyLinkedList {
 		end = null;
 	}
 	public void extend(MyLinkedList other) {
+		boolean bool = false;
+		if(other.size() == 0) {
+			return;
+		}
+		if(this.size() == 0) {
+			this.add(-111111);
+			this.add(-111111);
+			bool = true;
+		}
 		Node ente = other.end();
 		for(int q = 0; q < other.size(); q++) {
 			this.end.setNext(other.start());
 			this.end = other.start();
 			Node c = other.start.next();
 			other.start = c;
+			this.size++;
 		}
 		this.end = ente;
+		if(bool) {
+			this.removeFirst();
+			this.removeFirst();
+		}
 	}
-/*	public static void main(String[] wef) {
+	public static void main(String[] wef) {
 		MyLinkedList te = new MyLinkedList();
-		te.add(4);
-		te.add(3);
-		te.add(2);
-		te.add(1);
-		te.add(6);
-		te.add(5);
+		te.add(8);
+		te.add(9);
+		te.add(0);
 		System.out.println("Original: " + te);
 		MyLinkedList tr = new MyLinkedList();
-		tr.add(8);
-		tr.add(9);
-		tr.add(0);
 		System.out.println("Combining this with otiginal: " + tr);
 		te.extend(tr);
 		System.out.println(te);
 		te.add(10);
 		System.out.println(te);
-	} */
+	}
 }
