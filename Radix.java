@@ -11,18 +11,22 @@ public class Radix {
       buckets[q] = new MyLinkedList();
     }
     MyLinkedList supermega = new MyLinkedList();
+    for(int q = 0; q < dat.length; q++) {
+      supermega.add(dat[q]);
+    }
     for(int w = 0; w < ll; w++) {
       for(int e = 0; e < dat.length; e++) {
-        buckets[((dat[e] / ((int)Math.pow(10,w))) % 10) + 10].add(dat[e]);
+        buckets[((supermega.get(e) / ((int)Math.pow(10,w))) % 10) + 10].add(dat[e]);
       }
-      for(int rf = 0; rf < buckets.length; rf++) {
-        System.out.print(buckets[rf]);
+      supermega.reset();
+      for(int r = 0; r < buckets.length; r++) {
+        supermega.extend(buckets[r]);
       }
-      System.out.println("----------");
     }
+    System.out.println(supermega);
   }
   public static void main(String[] sdjf) {
-    int[] test = {170, 45, 75, 90, 802, 24, 2, 66};
+    int[] test = {170, 45, 75, 90, 802, 24, 2, 66, -84, -103, 26};
     radixsort(test);
     /*System.out.print("[");
     for(int q = 0; q < test.length; q++) {

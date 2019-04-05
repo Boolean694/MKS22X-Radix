@@ -170,6 +170,9 @@ public class MyLinkedList {
 	}
 	public void extend(MyLinkedList other) {
 		boolean bool = false;
+		System.out.println("this size: " + this.size());
+		System.out.println("other size: " + other.size());
+		System.out.println("other: " + other);
 		if(other.size() == 0) {
 			return;
 		}
@@ -192,7 +195,7 @@ public class MyLinkedList {
 			this.removeFirst();
 		}
 	}
-	public static void main(String[] wef) {
+/*	public static void main(String[] wef) {
 		MyLinkedList te = new MyLinkedList();
 		te.add(8);
 		te.add(9);
@@ -204,5 +207,5 @@ public class MyLinkedList {
 		System.out.println(te);
 		te.add(10);
 		System.out.println(te);
-	}
+	} */
 }
