@@ -2,17 +2,6 @@ public class MyLinkedList {
 	private int size;
 	private Node start;
 	private Node end;
-	public MyLinkedList(int[] a) {
-	    this();
-	    if(a.length == 0) {size = 0; start = null; end = null;}
-	    else {
-			size = 0;
-	        for(int q = 0; q < a.length; q++) {
-	            this.add(a[q]);
-	            size++;
-	        }
-	    }
-	}
 	public MyLinkedList() {
 	    size = 0;
 	    start = null;
@@ -154,6 +143,14 @@ public class MyLinkedList {
 		size--;
 		return tr;
 	}
+	public Integer removeFirst() {
+		Node c = start.next();
+		Integer pret = start.getData();
+		start = c;
+		start.setPrev(null);
+		size--;
+		return pret;
+	}
 	public boolean remove(Integer v) {
 		if(!this.contains(v)) {return false;}
 		int d = indexOf(v);
@@ -161,4 +158,12 @@ public class MyLinkedList {
 		size--;
 		return true;
 	}
+/*	public static void main(String[] wef) {
+		MyLinkedList te = new MyLinkedList();
+		te.add(4);
+		te.add(3);
+		System.out.println(te);
+		System.out.println("num removed: " + te.removeFirst());
+		System.out.println(te);
+	} */
 }
