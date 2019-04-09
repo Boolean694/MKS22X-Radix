@@ -161,7 +161,7 @@ public class MyLinkedList {
 	}
 	public void extend(MyLinkedList other) {
 		boolean bool = false;
-
+/*
 		System.out.println("this size: " + this.size());
 		System.out.println("other size: " + other.size());
 		System.out.println("this: " + this);
@@ -169,7 +169,7 @@ public class MyLinkedList {
 		if(this.size() == 0) {} else {System.out.println("this start: " + this.start);}
 		if(other.size() == 0) {} else {System.out.println("other start: " + other.start);}
 		System.out.println("");
-
+*/
 		if(other.size() == 0) {
 			return;
 		}

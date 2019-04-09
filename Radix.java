@@ -13,9 +13,14 @@ public class Radix {
     MyLinkedList supermega = new MyLinkedList();
     for(int q = 0; q < dat.length; q++) {
       supermega.add(dat[q]);
+      System.out.println("Supermega: " + supermega);
     }
+    System.out.println("Supermega length: " + supermega.size());
     for(int w = 0; w < ll; w++) {
-      for(int e = 0; e < dat.length; e++) {
+      for(int e = 0; e < supermega.size() - 1; e++) {
+        //System.out.println("Supermega: " + supermega + " , length: " + supermega.size());
+        System.out.println("e: " + e);
+        System.out.println(supermega.get(e));
         if(supermega.get(e) < 0) {
           if(w == ll - 1) {
             buckets[((supermega.get(e) / ((int)Math.pow(10,w))) % 10) + 10].add(dat[e]);
@@ -28,16 +33,18 @@ public class Radix {
           buckets[((supermega.get(e) / ((int)Math.pow(10,w))) % 10) + 10].add(dat[e]);
         }
       }
-      supermega.reset();
+      //supermega.reset();
+      /*
       for(int r = 0; r < buckets.length; r++) {
         System.out.print(buckets[r] + " ");
         System.out.println("");
       }
+      */
       for(int r = 0; r < buckets.length; r++) {
         supermega.extend(buckets[r]);
       }
     }
-    System.out.println(supermega);
+    //System.out.println(supermega);
   }
   public static void main(String[] sdjf) {
     int[] test = {170, 45, 75, 90, 802, 24, 2, 66, -84, -103, 26};
