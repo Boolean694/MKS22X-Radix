@@ -38,19 +38,19 @@ public class Radix {
       //combine into supermega
       for(int r = 0; r < buckets.length; r++) {
         supermega.extend(buckets[r]);
-        System.out.println("r: " + r + ", " + "supermega: " + supermega);
+        System.out.println("r: " + (r - 9) + ", " + "supermega: " + supermega);
       }
       //into dat
       for(int t = 0; t < dat.length; t++) {
         dat[t] = supermega.removeFirst();
-        System.out.println("dat: " + Arrays.toString(dat));
       }
       System.out.println("||||||||||||||||||||||||");
       supermega.reset();
     }
+    System.out.println("sorry i was trying to debug ignore everything printed above");
   }
   public static void main(String[] sdjf) {
-    int[] test = {170, 45, 75, 90, 802, 24, 2, 66, -84, -103, 26};
+    int[] test = {-730,-155,739,-429,84,-72,945,3,-9,14,-445};
     radixsort(test);
     /*System.out.print("[");
     for(int q = 0; q < test.length; q++) {
