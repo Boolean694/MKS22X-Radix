@@ -24,29 +24,6 @@ public class MyLinkedList {
 		size++;
 		return true;
 	}
-	public Integer get(int i) {
-	    if(i < 0 || i >= size) {throw new IndexOutOfBoundsException();}
-	    if(i == 0) {return start.getData();}
-	    Node c = start.next();
-	    int q = 1;
-	    while(q < i) {
-	        c = c.next();
-	        q++;
-	    }
-	    return c.getData();
-	}
-	public Integer set(int i, Integer v) {
-	    if(i < 0 || i >= size) {throw new IndexOutOfBoundsException();}
-	    Node c = start.next();
-	    int q = 1;
-	    while(q < i) {
-	        c = c.next();
-	        q++;
-	    }
-		int f = c.getData();
-		c.setData(v);
-		return f;
-	}
 	public String toString() {
 	    if(size == 0) {return "[]";}
 	    if(size == 1) {return "[" + start.getData() + "]";}
@@ -61,78 +38,6 @@ public class MyLinkedList {
 		s += "]";
 		return s;
 	}
-	public boolean contains(Integer v) {
-        if(size == 0) {return false;}
-        if(size == 1) {return start.getData() == v;}
-		boolean b = false;
-		if(start.getData() == v || end.getData() == v) {b = true;}
-		Node c = start.next();
-		for(int q = 1; q < this.size - 1; q++) {
-			if(b) {return true;}
-			if(c.getData() == v) {b = true;}
-			c = c.next();
-		}
-		return b;
-	}
-	public int indexOf(Integer v) {
-		if(start.getData() == v) {return 0;}
-		if(end.getData() == v) {return size - 1;}
-		Node c = start.next();
-		for(int q = 1; q < size - 1; q++) {
-			if(c.getData() == v) {return q;}
-			c = c.next();
-		}
-		return -1;
-	}
-	public void add(int i, Integer v) {
-		if(i < 0 || i >= size) {throw new IndexOutOfBoundsException();}
-		else if(i == 0) {
-			Node nn = new Node(v, start, null);
-			start.setPrev(nn);
-			start = nn;
-			size++;
-		}
-		else if(i == size - 1) {
-			add(v);
-			size++;
-		}
-		else {
-			Node c = start.next();
-			for(int q = 1; q < i; q++) {
-				c = c.next();
-			}
-			Node nn = new Node(v, c, c.prev());
-			c.prev().setNext(nn);
-			c.setPrev(nn);
-			size++;
-		}
-	}
-	public Integer remove(int i) {
-		if(i < 0 || i >= size) {throw new IndexOutOfBoundsException();}
-		if(i == 0) {
-			Integer te = start.getData();
-			start = start.next();
-			start.setPrev(null);
-			size--;
-			return te;
-		}
-		if(i == size - 1) {
-			Integer yw = end.getData();
-			end = end.prev();
-			end.setNext(null);
-			size--;
-			return yw;
-		}
-		Node c = start.next();
-		for(int q = 1; q < i; q++) {
-			c = c.next();
-		}
-		Integer tr = c.getData();
-		c.next().setPrev(c.prev());
-		c.prev().setNext(c.next());
-		size--;
-		return tr;
-	}
 	public Node start() {
 		return start;
 	}
@@ -146,13 +51,6 @@ public class MyLinkedList {
 		start.setPrev(null);
 		size--;
 		return pret;
-	}
-	public boolean remove(Integer v) {
-		if(!this.contains(v)) {return false;}
-		int d = indexOf(v);
-		this.remove(d);
-		size--;
-		return true;
 	}
 	public void reset() {
 		size = 0;
@@ -191,6 +89,7 @@ public class MyLinkedList {
 			this.removeFirst();
 			this.removeFirst();
 		}
+		other.reset();
 	}
 	public static void main(String[] wef) {
 		MyLinkedList te = new MyLinkedList();
@@ -199,7 +98,7 @@ public class MyLinkedList {
 		tr.add(8);
 		tr.add(9);
 		tr.add(0);
-		System.out.println("Combining this with otiginal: " + tr);
+		System.out.println("Combining this with original: " + tr);
 		te.extend(tr);
 		System.out.println(te);
 		te.add(10);

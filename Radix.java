@@ -11,40 +11,32 @@ public class Radix {
       buckets[q] = new MyLinkedList();
     }
     MyLinkedList supermega = new MyLinkedList();
-    for(int q = 0; q < dat.length; q++) {
-      supermega.add(dat[q]);
-      System.out.println("Supermega: " + supermega);
-    }
-    System.out.println("Supermega length: " + supermega.size());
+    //for each digit
     for(int w = 0; w < ll; w++) {
-      for(int e = 0; e < supermega.size() - 1; e++) {
-        //System.out.println("Supermega: " + supermega + " , length: " + supermega.size());
-        System.out.println("e: " + e);
-        System.out.println(supermega.get(e));
-        if(supermega.get(e) < 0) {
-          if(w == ll - 1) {
-            buckets[((supermega.get(e) / ((int)Math.pow(10,w))) % 10) + 10].add(dat[e]);
-          }
-          else {
-            buckets[(((supermega.get(e) * -1) / ((int)Math.pow(10,w))) % 10) + 10].add(dat[e]);
-          }
+      //into buckets
+      System.out.println("digit: " + (w + 1));
+      for(int e = 0; e < dat.length; e++) {
+        int dig = (dat[e] / (int)(Math.pow(10,w))) % 10;
+        //negative case
+        System.out.println("Stupid boolean: " + (dat[e] < 0 && dat[e] / (int)(Math.pow(10,w + 1)) != 0));
+        if(dat[e] < 0 && dat[e] / (int)(Math.pow(10,w + 1)) != 0) {
+          dig *= -1;
+          //dig += 10;
         }
-        else {
-          buckets[((supermega.get(e) / ((int)Math.pow(10,w))) % 10) + 10].add(dat[e]);
-        }
+        System.out.print("e: " + e + ", ");
+        System.out.println("digit: " + dig);
+        buckets[dig + 9].add(dat[e]);
       }
-      //supermega.reset();
-      /*
-      for(int r = 0; r < buckets.length; r++) {
-        System.out.print(buckets[r] + " ");
-        System.out.println("");
-      }
-      */
+      System.out.println("--------------");
+      //combine into supermega
       for(int r = 0; r < buckets.length; r++) {
         supermega.extend(buckets[r]);
       }
+      //into dat
+      for(int t = 0; t < supermega.size(); t++) {
+        dat[t] = supermega.removeFirst();
+      }
     }
-    //System.out.println(supermega);
   }
   public static void main(String[] sdjf) {
     int[] test = {170, 45, 75, 90, 802, 24, 2, 66, -84, -103, 26};
