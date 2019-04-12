@@ -45,6 +45,11 @@ public class MyLinkedList {
 		return end;
 	}
 	public Integer removeFirst() {
+		if(size == 1) {
+			Integer ret = start.getData();
+			reset();
+			return ret;
+		}
 		Node c = start.next();
 		Integer pret = start.getData();
 		start = c;
@@ -59,15 +64,6 @@ public class MyLinkedList {
 	}
 	public void extend(MyLinkedList other) {
 		boolean bool = false;
-/*
-		System.out.println("this size: " + this.size());
-		System.out.println("other size: " + other.size());
-		System.out.println("this: " + this);
-		System.out.println("other: " + other);
-		if(this.size() == 0) {} else {System.out.println("this start: " + this.start);}
-		if(other.size() == 0) {} else {System.out.println("other start: " + other.start);}
-		System.out.println("");
-*/
 		if(other.size() == 0) {
 			return;
 		}
@@ -94,6 +90,9 @@ public class MyLinkedList {
 	public static void main(String[] wef) {
 		MyLinkedList te = new MyLinkedList();
 		System.out.println("Original: " + te);
+		te.add(56);
+		te.add(57);
+		te.add(58);
 		MyLinkedList tr = new MyLinkedList();
 		tr.add(8);
 		tr.add(9);
@@ -103,5 +102,14 @@ public class MyLinkedList {
 		System.out.println(te);
 		te.add(10);
 		System.out.println(te);
+		MyLinkedList tw = new MyLinkedList();
+		tw.add(67);
+		tw.add(68);
+		tw.add(69);
+		System.out.println("Combining this with original: " + tw);
+		te.extend(tw);
+		System.out.println(te);
+		System.out.println(tr);
+		System.out.println(tw);
 	}
 }
