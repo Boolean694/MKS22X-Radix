@@ -88,28 +88,5 @@ public class MyLinkedList {
 		other.reset();
 	}
 	public static void main(String[] wef) {
-		MyLinkedList te = new MyLinkedList();
-		System.out.println("Original: " + te);
-		te.add(56);
-		te.add(57);
-		te.add(58);
-		MyLinkedList tr = new MyLinkedList();
-		tr.add(8);
-		tr.add(9);
-		tr.add(0);
-		System.out.println("Combining this with original: " + tr);
-		te.extend(tr);
-		System.out.println(te);
-		te.add(10);
-		System.out.println(te);
-		MyLinkedList tw = new MyLinkedList();
-		tw.add(67);
-		tw.add(68);
-		tw.add(69);
-		System.out.println("Combining this with original: " + tw);
-		te.extend(tw);
-		System.out.println(te);
-		System.out.println(tr);
-		System.out.println(tw);
 	}
 }
